@@ -1,0 +1,15 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  id: Int!
+  name: String!
+  descrition: String
+  price: Int!
+  category: String!
+}
+
+type Query {
+  items: [Item!]!
+}
