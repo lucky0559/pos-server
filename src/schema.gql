@@ -5,11 +5,23 @@
 type Item {
   id: Int!
   name: String!
-  descrition: String
+  description: String
   price: Int!
   category: String!
 }
 
 type Query {
   items: [Item!]!
+  getItem(name: String!): Item!
+}
+
+type Mutation {
+  addItem(addItemInput: AddItemInput!): Item!
+}
+
+input AddItemInput {
+  name: String!
+  description: String
+  price: Int!
+  category: String!
 }
