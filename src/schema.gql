@@ -10,13 +10,25 @@ type Item {
   category: String!
 }
 
+type User {
+  id: Int!
+  username: String!
+  password: String!
+}
+
 type Query {
   items: [Item!]!
   getItem(name: String!): Item!
+  users: [User!]!
+  user(id: Int!): User!
 }
 
 type Mutation {
   addItem(addItemInput: AddItemInput!): Item!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  login(loginInput: LoginInput!): User!
 }
 
 input AddItemInput {
@@ -24,4 +36,20 @@ input AddItemInput {
   description: String
   price: Int!
   category: String!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
 }
