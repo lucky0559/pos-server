@@ -34,7 +34,7 @@ export class UsersResolver {
     return this.usersService.remove(id);
   }
 
-  @Mutation(() => User)
+  @Query(() => User)
   async login(@Args('loginInput') loginInput: LoginInput): Promise<User> {
     return this.usersService.login(loginInput);
   }

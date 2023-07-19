@@ -21,6 +21,12 @@ type Query {
   getItem(name: String!): Item!
   users: [User!]!
   user(id: Int!): User!
+  login(loginInput: LoginInput!): User!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
 }
 
 type Mutation {
@@ -28,7 +34,6 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
-  login(loginInput: LoginInput!): User!
 }
 
 input AddItemInput {
@@ -47,9 +52,4 @@ input UpdateUserInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!
-}
-
-input LoginInput {
-  username: String!
-  password: String!
 }
