@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { LoginInput } from './dto/login-user.input';
@@ -40,9 +44,9 @@ export class UsersService {
     const user = await this.usersRepository.findOneOrFail({
       where: { username: loginInput.username },
     });
+    if (!user) throw new NotFoundException('User not found');
     const isMatch = await bcrypt.compare(loginInput.password, user.password);
     if (user && isMatch) {
-      console.log('correct');
       return user;
     } else {
       throw new UnauthorizedException('Invalid Username or Password');
