@@ -20,6 +20,10 @@ export class Item {
   @Field(() => Int)
   price: number;
 
+  @Column({ nullable: true })
+  @Field(() => Int, { nullable: true })
+  count?: number;
+
   @Column()
   @Field(() => String)
   category: string;
